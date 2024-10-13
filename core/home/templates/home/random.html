@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background: #1f1f1f;
+        color: #f1f1f1;
+      }
+
+      .box {
+        border: 1px solid red;
+        padding: 13px;
+      }
+
+      .main{
+        width:100%;
+      }
+
+      .container{
+        display:flex;
+        gap:10px;
+        justify-content: space-between;
+        align-items: center;
+        width:100%;
+      }
+
+      .else{
+        width:100%;
+        text-align:center;
+      }
+
+    </style>
+    <title>Random</title>
+  </head>
+  <body>
+    <h1>Hi, {{ students.student_name }}</h1>
+    <h1>this is a random page showing to you hehe</h1>
+    <h2>this is date: {{date}}</h2>
+    {% if isActive %}
+    <div class="container">
+      <div class="main">
+        <div class="box" style="text-align:center;">Programms</div>
+        {%for item in programs%}
+        <div class="box">{{item}}</div>
+        {%endfor%}
+      </div>
+      <div class="main">
+        <div class="box" style="text-align:center">Students</div>
+        {% for key, value in students.items %}  <!-- Correct way to iterate over a dictionary -->
+            <div style="flex">
+                <div class="box">{{ value }}</div>   <!-- Display the value directly -->
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="else">sorry, isActive is False</div>
+    {%endif%}
+    
+    </div>
+  </body>
+</html>

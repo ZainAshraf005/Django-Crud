@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>django</title>
+    <style>
+      body{
+        background:green;
+        color:white;
+      }
+      h1 {
+        color: white;
+        background-color: darkgray;
+        border-radius: 10px;
+        width: 200px;
+        padding: 10px 0;
+        text-align: center;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      ul {
+        display: flex;
+        justify-content: space-between;
+        background-color: grey;
+        border-radius: 10px;
+      }
+      .bar {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        color: white;
+        margin-right: 19px;
+        padding: 10px;
+      }
+      .nav-items {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 50%;
+        color: white;
+        font-size: 20px;
+      }
+      .nav-items-zero {
+        display: none;
+      }
+      .nav-items-mob {
+        list-style: none;
+        background-color: grey;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        width: calc(100% -20px);
+        height: calc(100vh - 127px);
+        position: absolute;
+        right: 8px;
+        top: 122px;
+        left: 8px;
+        border-radius: 10px;
+        font-size: 25px;
+      }
+
+      /*---------------------------*/
+
+      @media only screen and (min-width: 600px) {
+        .bar {
+          display: none;
+        }
+        .nav-items-mob {
+          display: none;
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        .nav-items {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <h1>contact page</h1>
+        <div id="resbar" class="bar"><i class="fa fa-bars"></i></div>
+        <div id="navItems" class="nav-items">
+          <li><a href="/">Home</a></li>
+          <li><a href="about">about</a></li>
+          <li><a href="contact">conact</a></li>
+        </div>
+      </ul>
+    </div>
+
+    <script>
+      let bar = document.getElementById("resbar");
+      let nav = document.getElementById("navItems");
+
+      bar.addEventListener("click", () => {
+        if (nav.classList.contains("nav-items")) {
+          nav.classList.remove("nav-items");
+          nav.classList.add("nav-items-mob");
+        } else {
+          nav.classList.remove("nav-items-mob");
+          nav.classList.add("nav-items");
+        }
+      });
+    </script>
+  </body>
+</html>

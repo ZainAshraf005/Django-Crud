@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>receipes</title>
+
+</head>
+
+<body>
+
+    <body>
+        <div class=" flex w-[100%] bg-zinc-800 h-screen text-white">
+            <form method="post" class="w-[50%] border-r flex justify-center flex-col border-zinc-600"
+                enctype="multipart/form-data">
+                <div class=" flex flex-col justify-center p-3 gap-4 ">
+
+                    {% csrf_token %}
+                    <input spellcheck="false" type="text"
+                        class="bg-transparent border outline-none text-zinc-400 rounded-lg px-2 py-1 border-zinc-700"
+                        name="receipe_name" placeholder="receipe name">
+                    <textarea spellcheck="false"
+                        class="bg-transparent h-[392px] border outline-none text-zinc-400 rounded-lg px-2 py-1 border-zinc-700"
+                        name="receipe_description" id="" placeholder="add details"></textarea>
+                    <input type="file" class="bg-red-500 cursor-pointer rounded-lg border border-zinc-700"
+                        name="receipe_image" id="">
+                    <input type="submit" class="border cursor-pointer bg-green-700 px-2 py-1 rounded-lg border-zinc-700"
+                        value="add receipe">
+                </div>
+            </form>
+            <div class=" w-full p-5 ">
+                <form class="search mb-4">
+                    <input type="text" placeholder="search receipe"  class="bg-transparent px-3 py-1 outline-none border-zinc-700 rounded-lg border" name="search" id="search">
+                    <button type="submit" class="px-3 py-1 bg-green-700 rounded-lg">search</button>
+                </form>
+                <div class="cards flex w-full gap-4 flex-wrap">
+
+                    {% for receipe in receipes %}
+                    <div class="card border border-zinc-700 flex flex-col w-60 h-72 rounded-lg gap-4 p-2">
+                        <div class="image w-42 h-34 rounded-lg overflow-hidden">
+                            <img class="object-cover w-[100%] object-cover h-[100%]"
+                                src="/media/{{receipe.receipe_image}}" alt="">
+                        </div>
+                        <h3>{{receipe.receipe_name}}</h3>
+                        <p>{{receipe.receipe_description}}</p>
+                        <div>
+
+                            <a href="/delete-receipe/{{receipe.id}}">
+                                <button
+                                    class="bg-red-500 px-3 py-1 border rounded-lg border-transparent">delete</button>
+                            </a>
+                            <a href="/update-receipe/{{receipe.id}}">
+                                <button
+                                    class="bg-green-500 px-3 py-1 border rounded-lg border-transparent">update</button>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update-receipe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="bg-zinc-800 h-screen flex justify-center items-center">
+
+        <form method="post" class="w-[50%]  flex justify-center flex-col text-white"
+            enctype="multipart/form-data">
+            <div class=" flex flex-col justify-center p-3 gap-4 ">
+
+                {% csrf_token %}
+
+                <input spellcheck="false" type="text"
+                    class="bg-transparent border outline-none text-zinc-400 rounded-lg px-2 py-1 border-zinc-700"
+                    name="receipe_name" value="{{receipes.receipe_name}}" placeholder="receipe name">
+                <textarea spellcheck="false"
+                    class="bg-transparent h-[392px] border outline-none text-zinc-400 rounded-lg px-2 py-1 border-zinc-700"
+                    name="receipe_description" id=""
+                    placeholder="add details">{{receipes.receipe_description}}</textarea>
+                <input type="file" class="bg-red-500 cursor-pointer rounded-lg border border-zinc-700"
+                    name="receipe_image" id="">
+                <input type="submit" class="border cursor-pointer bg-green-700 px-2 py-1 rounded-lg border-zinc-700"
+                    value="update receipe">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
